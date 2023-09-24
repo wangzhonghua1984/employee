@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  <div class="container">
+    <div class="panel panel-default">
+      <div>
+        <h3>Create New Role</h3>
+      </div>
+      <div class="panel-body">
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {% for field in role_form %}
+          <div class="form-group">
+            <label>{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+              <div class="alert alert-danger" style="margin-top: 5px;">
+                {% for error in field.errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  <div class="container">
+    <div style="margin-bottom: 10px;">
+        <a class="btn btn-primary" href="/employee/role/add/">
+            <span class="glyphicon glyphicon-plus"  aria-hidden="true"></span>
+            Add New Role
+        </a>
+    </div>
+        <div class="panel panel-default">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Role Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for obj in role_objs %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ obj.Role_name }}</td>
+                <td>
+                    <a href="/employee/role/edit/{{ obj.id }}" class="btn btn-primary btn-xs">Edit</a>
+                    <a href="/employee/role/delete/{{ obj.id }}" class="btn btn-danger btn-xs">Delete</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+  </div>
+</div>
+{% endblock %}

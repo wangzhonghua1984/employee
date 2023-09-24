@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  <div class="container">
+    <div style="margin-bottom: 10px;">
+        <a class="btn btn-primary" href="/employee/depart/add/">
+            <span class="glyphicon glyphicon-plus"  aria-hidden="true"></span>
+            Add New Department
+        </a>
+    </div>
+        <div class="panel panel-default">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Department Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for obj in dep_objs %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ obj.Dep_name }}</td>
+                <td>
+                    <a href="/employee/depart/edit/{{ obj.id }}" class="btn btn-primary btn-xs">Edit</a>
+                    <a href="/employee/depart/delete/{{ obj.id }}" class="btn btn-danger btn-xs">Delete</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+  </div>
+</div>
+{% endblock %}

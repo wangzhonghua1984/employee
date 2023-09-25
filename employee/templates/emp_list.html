@@ -28,13 +28,9 @@
                 <td>{{ obj.Emp_dep }}</td>
                 <td>{{ obj.Emp_role }}</td>
                 <td>
-                {% if obj == Emp_res_apps %}
-                  {% for app in Emp_res_apps.all %}
-                  <td>
-                    app.App_name
-                  </td>
+                  {% for app in  obj.Emp_res_apps.all %}
+                  <div class="app-tag">{{ app.App_name }}</div>
                   {% endfor %}
-                {% endif %}
                 </td>
                 <td>
                     <a href="/employee/emp/edit/{{ obj.id }}" class="btn btn-primary btn-xs">Edit</a>

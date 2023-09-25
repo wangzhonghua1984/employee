@@ -218,14 +218,14 @@ def emp_del(request, emp_id):
     return redirect('/employee/emp/list/')
 
 
-def emp_edit(request, role_id):
+def emp_edit(request, emp_id):
     if request.method == "GET":
-        obj=models.Roles.objects.filter(id=role_id).first()
-        return render(request, "role_edit.html",{
+        obj=models.Employees.objects.filter(id=emp_id).first()
+        return render(request, "emp_edit.html",{
             "edit_obj": obj
         })
         
     edit_role_name = request.POST.get("Role_name")
     edit_role_intro = request.POST.get("Role_intro")
-    models.Roles.objects.filter(id=role_id).update(Role_name=edit_role_name, Role_intro=edit_role_intro)
+    models.Roles.objects.filter(id=emp_id).update(Role_name=edit_role_name, Role_intro=edit_role_intro)
     return redirect('/employee/role/list/')   

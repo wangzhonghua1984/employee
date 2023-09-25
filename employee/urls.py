@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     ##department views
-    # path('index/', views.index),
+    path('index/', views.index),
     path('depart/list/', views.dep_list),
     path('depart/add/', views.dep_add),
     path('depart/delete/<int:dep_id>', views.dep_del),
@@ -19,5 +19,8 @@ urlpatterns = [
     path('role/delete/<int:role_id>', views.role_del),
     path('role/edit/<int:role_id>', views.role_edit),
     ##employee views
-    path('user/list/', views.user_list),
+    path('emp/list/', views.emp_list),
+    path('emp/add/', views.emp_add),
+    path('emp/delete/<int:emp_id>', views.emp_del),
+    path('emp/edit/<int:emp_id>', views.emp_edit)
 ]

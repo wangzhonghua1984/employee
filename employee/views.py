@@ -1,9 +1,15 @@
+from cProfile import label
+from pyexpat import model
+from random import choices
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from . import models
 from django import forms
 from django.core.exceptions import ValidationError
+from django_select2.forms import Select2MultipleWidget
 # Create your views here.
+def index(request):
+    return render(request,"index.html")
 ## all functions for department##
 def dep_list(request):
     dep_objs= models.Departments.objects.all()
@@ -145,7 +151,7 @@ def role_add(request):
         role_form.save()
         return redirect('/employee/role/list/')
     
-    return render(request,"role.html", {
+    return render(request,"role_add.html", {
         "role_form": role_form
     })
 
@@ -169,8 +175,57 @@ def role_edit(request, role_id):
 
         
 ## all functions for employee
-def user_list(request):
+def emp_list(request):
     emp_objs = models.Employees.objects.all()
-    return render(request,"user_list.html", {
+    return render(request,"emp_list.html", {
         "emp_objs" : emp_objs
     })
+    
+class EmpModelForm(forms.ModelForm):
+    Emp_name = forms.CharField(min_length=2, label="Employee Name") 
+    Emp_dep = forms.ModelChoiceField(queryset=models.Departments.objects.all(), label="Role of Deployment") 
+    Emp_role = forms.ModelChoiceField(queryset=models.Roles.objects.all(), label="Role of Employee") 
+    Emp_res_apps = forms.ModelMultipleChoiceField(queryset=models.Applications.objects.all(), label = "Responsible Applications",widget= Select2MultipleWidget )
+    
+    class Meta:
+        model = models.Employees
+        fields = ["Emp_name","Emp_dep","Emp_role", "Emp_res_apps"]
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    
+        for verbose, filed in self.fields.items():
+            filed.widget.attrs = {"class" : "form-control"}
+
+
+
+def emp_add(request):
+    if request.method == "GET":
+        emp_form = EmpModelForm()
+        return render(request,"emp_add.html", {"emp_form": emp_form})
+
+    emp_form = EmpModelForm(data=request.POST)
+    if emp_form.is_valid():
+        emp_form.save()
+        return redirect('/employee/emp/list/')
+    
+    return render(request,"emp_add.html", {
+        "emp_form": emp_form
+    })
+
+def emp_del(request, emp_id):
+    obj=models.Employees.objects.filter(id=emp_id).delete()
+    return redirect('/employee/emp/list/')
+
+
+def emp_edit(request, role_id):
+    if request.method == "GET":
+        obj=models.Roles.objects.filter(id=role_id).first()
+        return render(request, "role_edit.html",{
+            "edit_obj": obj
+        })
+        
+    edit_role_name = request.POST.get("Role_name")
+    edit_role_intro = request.POST.get("Role_intro")
+    models.Roles.objects.filter(id=role_id).update(Role_name=edit_role_name, Role_intro=edit_role_intro)
+    return redirect('/employee/role/list/')   

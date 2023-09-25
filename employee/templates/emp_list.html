@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  <div class="container">
+    <div style="margin-bottom: 10px;">
+        <a class="btn btn-primary" href="/employee/emp/add/">
+            <span class="glyphicon glyphicon-plus"  aria-hidden="true"></span>
+            Add New Employee
+        </a>
+    </div>
+        <div class="panel panel-default">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Employee Name</th>
+                <th>Employee Department</th>
+                <th>Employee Role</th>
+                <th>Employee Responsible Applications</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for obj in emp_objs %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ obj.Emp_name }}</td>
+                <td>{{ obj.Emp_dep }}</td>
+                <td>{{ obj.Emp_role }}</td>
+                <td>
+                {% if obj == Emp_res_apps %}
+                  {% for app in Emp_res_apps.all %}
+                  <td>
+                    app.App_name
+                  </td>
+                  {% endfor %}
+                {% endif %}
+                </td>
+                <td>
+                    <a href="/employee/emp/edit/{{ obj.id }}" class="btn btn-primary btn-xs">Edit</a>
+                    <a href="/employee/emp/delete/{{ obj.id }}" class="btn btn-danger btn-xs">Delete</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+  </div>
+</div>
+{% endblock %}

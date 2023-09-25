@@ -10,7 +10,7 @@ class Departments(models.Model):
     
   
 class Roles(models.Model):
-    Role_name=models.CharField(verbose_name="role_name",max_length=16)
+    Role_name=models.CharField(verbose_name="role_name",max_length=56)
     Role_intro=models.CharField(verbose_name="role_intro",max_length=256)
     
     def __str__(self):
@@ -26,7 +26,7 @@ class Applications(models.Model):
     
     
 class Employees(models.Model):
-    Emp_name = models.CharField(max_length=32)
-    Emp_dep = models.ForeignKey(to="Departments",to_field="id", on_delete=models.CASCADE)
-    Emp_role = models.ForeignKey(to="Roles", to_field="id", on_delete=models.CASCADE)
+    Emp_name = models.CharField(verbose_name="emp_name", max_length=32)
+    Emp_dep = models.ForeignKey(verbose_name="emp_dep",to="Departments",to_field="id", on_delete=models.CASCADE)
+    Emp_role = models.ForeignKey(verbose_name="emp_role",to="Roles", to_field="id", on_delete=models.CASCADE)
     Emp_res_apps = models.ManyToManyField(Applications)

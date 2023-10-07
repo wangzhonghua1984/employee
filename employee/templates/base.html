@@ -3,54 +3,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    {% block title%}
+    {% endblock %}
     {% load static %}
-    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.css' %}">
-    <script src="{% static '/bootstrap/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/bootstrap5/css/bootstrap.css' %}">
+    <script src="{% static '/bootstrap5/js/bootstrap.js' %}"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/employee/index">Employee Platform</a>
-          </div>
-      
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li>
-                <a href="/employee/depart/list" style="margin-right: 5px;">
-                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                    Departments Management
-                </a>
-              </li>
-              <li>
-                <a href="/employee/emp/list" style="margin-right: 5px;">
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    Employees Management
-                </a>
-             </li>
-             <li>
-              <a href="/employee/app/list" style="margin-right: 5px;">
-                  <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
-                  Applications Management
-              </a>
-           </li>
-           <li>
-            <a href="/employee/role/list" style="margin-right: 5px;">
-                <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
-                Roles Management
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Employee Platform</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li>
+            <a href="#" style="margin-right: 5px;">
+              Department Management
             </a>
-         </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Department Management</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Department Management</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Department Management</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
     {% block content%}
     {% endblock %}
 </body>

@@ -21,7 +21,7 @@
               {% for obj in dep_objs %}
               <tr>
                 <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ obj.Dep_name }}</td>
+                <td class="text-primary">{{ obj.Dep_name }}</td>
                 <td>
                     <a href="/employee/depart/edit/{{ obj.id }}" class="btn btn-primary btn-xs">Edit</a>
                     <a href="/employee/depart/delete/{{ obj.id }}" class="btn btn-danger btn-xs">Delete</a>

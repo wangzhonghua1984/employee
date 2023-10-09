@@ -10,32 +10,28 @@
     <script src="{% static '/bootstrap5/js/bootstrap.js' %}"></script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg" style="background-color: #1d6497; margin-bottom: 80px" >
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Employee Platform</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li>
-            <a href="#" style="margin-right: 5px;">
-              Department Management
-            </a>
+            <a class="nav-link active" aria-current="page" href="/employee/depart/list/">Department Management</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Department Management</a>
+            <a class="nav-link active" aria-current="page" href="/employee/role/list/">Role Management</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Department Management</a>
+            <a class="nav-link active" aria-current="page" href="/employee/app/list/">Application Management</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Department Management</a>
+            <a class="nav-link active" aria-current="page" href="/employee/emp/list/">Employee Management</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  
     {% block content%}
     {% endblock %}
 </body>

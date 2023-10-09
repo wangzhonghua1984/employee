@@ -8,42 +8,26 @@
     <link rel="stylesheet" href="{% static 'bootstrap5/css/bootstrap.css' %}">
 </head>
 <body>
-    
+    <div class="container col-lg-3"  >
+        <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+
     <script src="{% static 'bootstrap5/js/bootstrap.min.js' %}"></script>
 </body>
-    <div class="row">
-        <div class="col-md-9 order-2">
-            <h5>content list</h5>
-            <ul>
-                <li>article1</li>
-                <li>article2</li>
-                <li>article3</li>
-            </ul>
-        </div>
-        <div class="col-md-3 order-1">
-            <h5>导航</h5>
-            <ul>
-                <li>首页</li>
-                <li>视频直播</li>
-                <li>视频回放</li>
-            </ul>
-        </div>
-        <p class="fw-bold">here's the pattern(normal)</p>
-        <p class="lead">here's the pattern(lead)</p>
-        <small class="text-warning">here's the pattern(text-muted)</small>
-        <p class="small">here's the pattern(small)</p>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <p class="col-md-3 text-truncate fw-bold fst-italic text-success" >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente pariatur delectus tenetur inventore nulla porro cumque, corrupti blanditiis necessitatibus maiores provident commodi natus aperiam ab rerum in non recusandae? Fugiat.</p>
-        </div>
-        <div class="col-md-6">
-            <h3>table</h3>
-            <ul class="list-inline">
-                <li class="list-inline-item">HTML</li>
-                <li class="list-inline-item">CSS</li>
-                <li class="list-inline-item">Bootstrap</li>
-            </ul>
-        </div>
-    </div>
+
 </html>
